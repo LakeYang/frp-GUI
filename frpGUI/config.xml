@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<FRPGUI>
+  <server>
+  </server>
+  <client>
+    <config>
+      <name>WinRemoteDesktop</name>
+      <proto>TCP</proto>
+      <port>3389</port>
+      <domain>
+      </domain>
+      <issub>1</issub>
+      <ip>127.0.0.1</ip>
+      <rport>3389</rport>
+    </config>
+    <config>
+      <name>LinuxSSH</name>
+      <proto>TCP</proto>
+      <port>22</port>
+      <domain>
+      </domain>
+      <issub>1</issub>
+      <ip>127.0.0.1</ip>
+      <rport>2000</rport>
+    </config>
+    <config>
+      <name>Web Service</name>
+      <proto>HTTP</proto>
+      <port>80</port>
+      <domain>app</domain>
+      <issub>1</issub>
+      <ip>127.0.0.1</ip>
+      <rport>8080</rport>
+    </config>
+  </client>
+  <startup>0</startup>
+</FRPGUI>
