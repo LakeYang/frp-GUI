@@ -31,7 +31,7 @@ Partial Class About
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(3, 46)
+        Me.Label1.Location = New System.Drawing.Point(3, 47)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(359, 24)
         Me.Label1.TabIndex = 0
@@ -41,7 +41,7 @@ Partial Class About
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(3, 80)
+        Me.LinkLabel1.Location = New System.Drawing.Point(3, 81)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(215, 12)
         Me.LinkLabel1.TabIndex = 1
@@ -51,7 +51,7 @@ Partial Class About
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(5, 116)
+        Me.Label2.Location = New System.Drawing.Point(5, 117)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(233, 24)
         Me.Label2.TabIndex = 2
@@ -60,7 +60,7 @@ Partial Class About
         'LinkLabel2
         '
         Me.LinkLabel2.AutoSize = True
-        Me.LinkLabel2.Location = New System.Drawing.Point(3, 157)
+        Me.LinkLabel2.Location = New System.Drawing.Point(3, 158)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(191, 12)
         Me.LinkLabel2.TabIndex = 3
