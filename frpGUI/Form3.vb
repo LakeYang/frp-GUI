@@ -1,10 +1,10 @@
 ﻿Public Class CliMgr
     Protected Overrides Sub OnClosing(ByVal e As System.ComponentModel.CancelEventArgs)
-        Main.Enabled = True
         Main.ReloadGUI()
         Main.Activate()
     End Sub
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ClientList.Items.Clear()
         For Each node In Main.config.DocumentElement.SelectNodes("/FRPGUI/client/config")
             ClientList.Items.Add(node.SelectSingleNode("name").InnerText)
         Next
@@ -13,7 +13,6 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        Main.Enabled = True
         Main.ReloadGUI()
         Main.Activate()
         Me.Close()

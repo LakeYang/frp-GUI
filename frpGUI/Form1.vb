@@ -33,7 +33,30 @@ Public Class Main
         CliConfig.Items.Clear()
         For Each node In config.DocumentElement.SelectNodes("/FRPGUI/client/config")
             CliConfig.Items.Add(node.SelectSingleNode("name").InnerText)
+            If node.SelectSingleNode("inlist").InnerText = "1" Then
+                CliConfig.Visible = False
+                CliProto.Enabled = False
+                CliDom.Enabled = False
+                CliIsSub.Enabled = False
+                CliIP.Enabled = False
+                CliPort.Enabled = False
+                CliRemPort.Enabled = False
+                CliSave.Enabled = False
+                CliAdvSet.Enabled = False
+                CliConfHint.Text = "Multiple mode enabled." & vbCrLf & "Config Disabled."
+                Exit Sub
+            End If
         Next
+        CliConfHint.Text = "Config"
+        CliConfig.Visible = True
+        CliProto.Enabled = True
+        CliDom.Enabled = True
+        CliIsSub.Enabled = True
+        CliIP.Enabled = True
+        CliPort.Enabled = True
+        CliRemPort.Enabled = True
+        CliSave.Enabled = True
+        CliAdvSet.Enabled = True
     End Sub
 
     Private WithEvents MyProcess As Process
@@ -69,12 +92,8 @@ Public Class Main
             config.Load(path & "/config.xml")
             AppendOutputText("config loaded")
         End If
-        For Each node In config.DocumentElement.SelectNodes("/FRPGUI/server/config")
-            ServerToolStripMenuItem.DropDownItems.Add(node.SelectSingleNode("name").InnerText, Nothing, AddressOf ToolStripMenuItem_Click)
-        Next
-        For Each node In config.DocumentElement.SelectNodes("/FRPGUI/client/config")
-            CliConfig.Items.Add(node.SelectSingleNode("name").InnerText)
-        Next
+        ReloadGUI()
+
         If config.DocumentElement.SelectSingleNode("/FRPGUI/startup").InnerText = "1" Then
             BootSetMenu.Checked = True
             My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).SetValue(Application.ProductName, Application.ExecutablePath & " -s")
@@ -180,7 +199,7 @@ Public Class Main
     End Sub
 
     Private Sub AboutFrpGUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AboutFrpGUIToolStripMenuItem.Click
-        About.Show()
+        About.ShowDialog()
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -203,7 +222,7 @@ Public Class Main
 
     End Sub
 
-    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles CliConfHint.Click
 
     End Sub
 
@@ -211,7 +230,7 @@ Public Class Main
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CliAdvSet.Click
 
     End Sub
 
@@ -240,22 +259,48 @@ Public Class Main
                         outputFile.WriteLine("privilege_token = " & ServerToken.Text)
                     Else
                     End If
-                    outputFile.WriteLine("")
-                    outputFile.WriteLine("[service]")
-                    If ServerMode.Text = "Privilege" Then
-                        outputFile.WriteLine("privilege_mode = true")
-                    Else
-                    End If
-                    outputFile.WriteLine("type = " & CliProto.Text.ToLower())
-                    If CliDom.Text <> "" Then
-                        If CliIsSub.Checked Then
-                            outputFile.WriteLine("subdomain = " & CliDom.Text)
+                    If CliConfHint.Text = "Config" Then
+                        outputFile.WriteLine("")
+                        outputFile.WriteLine("[service]")
+                        If ServerMode.Text = "Privilege" Then
+                            outputFile.WriteLine("privilege_mode = true")
                         Else
-                            outputFile.WriteLine("custom_domains = " & CliDom.Text)
                         End If
+                        outputFile.WriteLine("type = " & CliProto.Text.ToLower())
+                        If CliDom.Text <> "" Then
+                            If CliIsSub.Checked Then
+                                outputFile.WriteLine("subdomain = " & CliDom.Text)
+                            Else
+                                outputFile.WriteLine("custom_domains = " & CliDom.Text)
+                            End If
+                        End If
+                        outputFile.WriteLine("local_port = " & CliPort.Text)
+                        outputFile.WriteLine("remote_port = " & CliRemPort.Text)
+                    Else
+                        AppendOutputText("Multiple mode enabled")
+                        Dim servicecount = 0
+                        For Each node In config.DocumentElement.SelectNodes("/FRPGUI/client/config")
+                            If node.SelectSingleNode("inlist").InnerText = "1" Then
+                                servicecount += 1
+                                outputFile.WriteLine("")
+                                outputFile.WriteLine("[service" & servicecount & "]")
+                                If ServerMode.Text = "Privilege" Then
+                                    outputFile.WriteLine("privilege_mode = true")
+                                Else
+                                End If
+                                outputFile.WriteLine("type = " & node.SelectSingleNode("proto").InnerText.ToLower())
+                                If CliDom.Text <> "" Then
+                                    If CliIsSub.Checked Then
+                                        outputFile.WriteLine("subdomain = " & node.SelectSingleNode("domain").InnerText)
+                                    Else
+                                        outputFile.WriteLine("custom_domains = " & node.SelectSingleNode("domain").InnerText)
+                                    End If
+                                End If
+                                outputFile.WriteLine("local_port = " & node.SelectSingleNode("port").InnerText)
+                                outputFile.WriteLine("remote_port = " & node.SelectSingleNode("rport").InnerText)
+                            End If
+                        Next
                     End If
-                    outputFile.WriteLine("local_port = " & CliPort.Text)
-                    outputFile.WriteLine("remote_port = " & CliRemPort.Text)
                 End Using
             End If
             AppendOutputText("Starting frps service")
@@ -300,8 +345,7 @@ Public Class Main
     End Sub
 
     Private Sub ClientConfigToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientConfigToolStripMenuItem.Click
-        Me.Enabled = False
-        SvrMgr.Show()
+        SvrMgr.ShowDialog()
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -353,7 +397,7 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles CliSave.Click
         Dim clintname = InputBox("Pick a name for this client config:", "Save client config", CliConfig.Text)
 
         If clintname <> "" Then
@@ -410,7 +454,10 @@ Public Class Main
     End Sub
 
     Private Sub ClientManagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientManagerToolStripMenuItem.Click
-        Me.Enabled = False
-        CliMgr.Show()
+        CliMgr.ShowDialog()
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        MultiSetting.ShowDialog()
     End Sub
 End Class

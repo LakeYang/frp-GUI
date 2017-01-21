@@ -2,9 +2,9 @@
 <MyApplicationData xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <MySubMain>true</MySubMain>
   <MainForm>Main</MainForm>
-  <SingleInstance>false</SingleInstance>
+  <SingleInstance>true</SingleInstance>
   <ShutdownMode>0</ShutdownMode>
-  <EnableVisualStyles>false</EnableVisualStyles>
+  <EnableVisualStyles>true</EnableVisualStyles>
   <AuthenticationMode>0</AuthenticationMode>
-  <SaveMySettingsOnExit>true</SaveMySettingsOnExit>
+  <SaveMySettingsOnExit>false</SaveMySettingsOnExit>
 </MyApplicationData>

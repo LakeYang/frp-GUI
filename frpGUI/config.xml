@@ -12,6 +12,7 @@
       <issub>1</issub>
       <ip>127.0.0.1</ip>
       <rport>3389</rport>
+      <inlist>0</inlist>
     </config>
     <config>
       <name>LinuxSSH</name>
@@ -22,6 +23,7 @@
       <issub>1</issub>
       <ip>127.0.0.1</ip>
       <rport>2000</rport>
+      <inlist>0</inlist>
     </config>
     <config>
       <name>Web Service</name>
@@ -31,6 +33,7 @@
       <issub>1</issub>
       <ip>127.0.0.1</ip>
       <rport>8080</rport>
+      <inlist>0</inlist>
     </config>
   </client>
   <startup>0</startup>

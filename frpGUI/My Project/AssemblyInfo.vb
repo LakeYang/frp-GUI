@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("WindowsApplication2")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyTitle("frp GUI")>
+<Assembly: AssemblyDescription("A GUI for frp - A fast reverse proxy")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("WindowsApplication2")>
-<Assembly: AssemblyCopyright("Copyright ©  2017")>
+<Assembly: AssemblyProduct("frp GUI")>
+<Assembly: AssemblyCopyright("Copyright LakeYang © 2017")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

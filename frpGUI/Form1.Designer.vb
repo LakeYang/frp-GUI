@@ -54,12 +54,12 @@ Partial Class Main
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.CliSave = New System.Windows.Forms.Button()
         Me.CliIsSub = New System.Windows.Forms.CheckBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.CliRemPort = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.CliAdvSet = New System.Windows.Forms.Button()
         Me.CliPort = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.CliIP = New System.Windows.Forms.TextBox()
@@ -69,7 +69,7 @@ Partial Class Main
         Me.CliProto = New System.Windows.Forms.ComboBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.CliConfig = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.CliConfHint = New System.Windows.Forms.Label()
         Me.OutputTextBox = New System.Windows.Forms.TextBox()
         Me.Switch = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
@@ -201,7 +201,7 @@ Partial Class Main
         '
         Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
-        Me.NotifyIcon1.Text = "frp GUI"
+        Me.NotifyIcon1.Text = "frp GUI 1.0"
         Me.NotifyIcon1.Visible = True
         '
         'ContextMenuStrip1
@@ -297,12 +297,12 @@ Partial Class Main
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.Button4)
+        Me.GroupBox2.Controls.Add(Me.CliSave)
         Me.GroupBox2.Controls.Add(Me.CliIsSub)
         Me.GroupBox2.Controls.Add(Me.Button3)
         Me.GroupBox2.Controls.Add(Me.CliRemPort)
         Me.GroupBox2.Controls.Add(Me.Label10)
-        Me.GroupBox2.Controls.Add(Me.Button1)
+        Me.GroupBox2.Controls.Add(Me.CliAdvSet)
         Me.GroupBox2.Controls.Add(Me.CliPort)
         Me.GroupBox2.Controls.Add(Me.Label9)
         Me.GroupBox2.Controls.Add(Me.CliIP)
@@ -312,7 +312,7 @@ Partial Class Main
         Me.GroupBox2.Controls.Add(Me.CliProto)
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.CliConfig)
-        Me.GroupBox2.Controls.Add(Me.Label5)
+        Me.GroupBox2.Controls.Add(Me.CliConfHint)
         Me.GroupBox2.Location = New System.Drawing.Point(12, 124)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(268, 131)
@@ -320,15 +320,15 @@ Partial Class Main
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Client"
         '
-        'Button4
+        'CliSave
         '
-        Me.Button4.BackgroundImage = CType(resources.GetObject("Button4.BackgroundImage"), System.Drawing.Image)
-        Me.Button4.Cursor = System.Windows.Forms.Cursors.Default
-        Me.Button4.Location = New System.Drawing.Point(144, 96)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(30, 30)
-        Me.Button4.TabIndex = 14
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.CliSave.BackgroundImage = CType(resources.GetObject("CliSave.BackgroundImage"), System.Drawing.Image)
+        Me.CliSave.Cursor = System.Windows.Forms.Cursors.Default
+        Me.CliSave.Location = New System.Drawing.Point(144, 96)
+        Me.CliSave.Name = "CliSave"
+        Me.CliSave.Size = New System.Drawing.Size(30, 30)
+        Me.CliSave.TabIndex = 14
+        Me.CliSave.UseVisualStyleBackColor = True
         '
         'CliIsSub
         '
@@ -365,14 +365,14 @@ Partial Class Main
         Me.Label10.TabIndex = 11
         Me.Label10.Text = "Remote Port"
         '
-        'Button1
+        'CliAdvSet
         '
-        Me.Button1.Location = New System.Drawing.Point(182, 100)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 10
-        Me.Button1.Text = "Advanced"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.CliAdvSet.Location = New System.Drawing.Point(182, 100)
+        Me.CliAdvSet.Name = "CliAdvSet"
+        Me.CliAdvSet.Size = New System.Drawing.Size(75, 23)
+        Me.CliAdvSet.TabIndex = 10
+        Me.CliAdvSet.Text = "Advanced"
+        Me.CliAdvSet.UseVisualStyleBackColor = True
         '
         'CliPort
         '
@@ -453,14 +453,14 @@ Partial Class Main
         Me.CliConfig.Size = New System.Drawing.Size(107, 20)
         Me.CliConfig.TabIndex = 1
         '
-        'Label5
+        'CliConfHint
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(21, 17)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(41, 12)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "Config"
+        Me.CliConfHint.AutoSize = True
+        Me.CliConfHint.Location = New System.Drawing.Point(21, 17)
+        Me.CliConfHint.Name = "CliConfHint"
+        Me.CliConfHint.Size = New System.Drawing.Size(41, 12)
+        Me.CliConfHint.TabIndex = 0
+        Me.CliConfHint.Text = "Config"
         '
         'OutputTextBox
         '
@@ -539,12 +539,12 @@ Partial Class Main
     Friend WithEvents Label2 As Label
     Friend WithEvents ServerToken As TextBox
     Friend WithEvents GroupBox2 As GroupBox
-    Friend WithEvents Label5 As Label
+    Friend WithEvents CliConfHint As Label
     Friend WithEvents DomType As Label
     Friend WithEvents CliProto As ComboBox
     Friend WithEvents Label6 As Label
     Friend WithEvents CliConfig As ComboBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents CliAdvSet As Button
     Friend WithEvents CliPort As TextBox
     Friend WithEvents Label9 As Label
     Friend WithEvents CliIP As TextBox
@@ -558,5 +558,5 @@ Partial Class Main
     Friend WithEvents Button3 As Button
     Friend WithEvents ClientManagerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CliIsSub As CheckBox
-    Friend WithEvents Button4 As Button
+    Friend WithEvents CliSave As Button
 End Class
