@@ -30,6 +30,10 @@ Public Class Main
             ServerToolStripMenuItem.DropDownItems.Add("No server profile")
             ServerToolStripMenuItem.DropDownItems(0).Enabled = False
         End If
+        CliConfig.Items.Clear()
+        For Each node In config.DocumentElement.SelectNodes("/FRPGUI/client/config")
+            CliConfig.Items.Add(node.SelectSingleNode("name").InnerText)
+        Next
     End Sub
 
     Private WithEvents MyProcess As Process
@@ -403,5 +407,10 @@ Public Class Main
         Else
             AppendOutputText("Profile creation cancelled")
         End If
+    End Sub
+
+    Private Sub ClientManagerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ClientManagerToolStripMenuItem.Click
+        Me.Enabled = False
+        CliMgr.Show()
     End Sub
 End Class

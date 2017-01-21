@@ -67,6 +67,7 @@
                     Exit For
                 End If
             Next
+            Main.config.Save(Main.path & "/config.xml")
         End If
     End Sub
 End Class
