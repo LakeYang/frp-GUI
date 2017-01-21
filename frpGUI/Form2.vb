@@ -33,7 +33,7 @@
     End Sub
 
     Private Sub DelBtn_Click(sender As Object, e As EventArgs) Handles DelBtn.Click
-        Dim response = MsgBox("Are you sure want to delete selected " & ServerList.SelectedItems.Count & "item(s)? This operation can not be undone!", MsgBoxStyle.YesNo, "frp GUI")
+        Dim response = MsgBox("Are you sure want to delete the selected " & ServerList.SelectedItems.Count & " item(s)? This operation can not be undone!", MsgBoxStyle.YesNo, "frp GUI")
         If response = MsgBoxResult.Yes Then
             For Each item In ServerList.SelectedItems
                 For Each node In Main.config.DocumentElement.SelectNodes("/FRPGUI/server/config")
@@ -45,6 +45,28 @@
             Next
             ServerList.Items.Remove(ServerList.SelectedItem)
             Main.config.Save(Main.path & "/config.xml")
+        End If
+    End Sub
+
+    Private Sub ReBtn_Click(sender As Object, e As EventArgs) Handles ReBtn.Click
+        Dim servername = InputBox("Pick a new name for server [" & ServerList.SelectedItems(0) & "] :", "Rename")
+        If servername <> "" Then
+            For Each node In Main.config.DocumentElement.SelectNodes("/FRPGUI/server/config")
+                If node.SelectSingleNode("name").innertext = servername Then
+                    MessageBox.Show("Name [" & servername & "] is already used!", "Error")
+                    Exit Sub
+                End If
+            Next
+            For Each node In Main.config.DocumentElement.SelectNodes("/FRPGUI/server/config")
+                If node.SelectSingleNode("name").innertext = ServerList.SelectedItems(0) Then
+                    node.SelectSingleNode("name").innertext = servername
+                    ServerList.Items.Clear()
+                    For Each node1 In Main.config.DocumentElement.SelectNodes("/FRPGUI/server/config")
+                        ServerList.Items.Add(node1.SelectSingleNode("name").InnerText)
+                    Next
+                    Exit For
+                End If
+            Next
         End If
     End Sub
 End Class
