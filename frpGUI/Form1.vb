@@ -275,6 +275,7 @@ Public Class Main
                             End If
                         End If
                         outputFile.WriteLine("local_port = " & CliPort.Text)
+                        outputFile.WriteLine("local_ip = " & CliIP.Text)
                         outputFile.WriteLine("remote_port = " & CliRemPort.Text)
                     Else
                         AppendOutputText("Multiple mode enabled")
@@ -297,6 +298,7 @@ Public Class Main
                                     End If
                                 End If
                                 outputFile.WriteLine("local_port = " & node.SelectSingleNode("port").InnerText)
+                                outputFile.WriteLine("local_ip = " & node.SelectSingleNode("ip").InnerText)
                                 outputFile.WriteLine("remote_port = " & node.SelectSingleNode("rport").InnerText)
                             End If
                         Next
@@ -434,10 +436,12 @@ Public Class Main
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("issub"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("ip"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("rport"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("inlist"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("name").InnerText = clintname
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("proto").InnerText = CliProto.Text
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("port").InnerText = CliPort.Text
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("domain").InnerText = CliDom.Text
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("lnlist").InnerText = 0
             If CliIsSub.Checked Then
                 config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("issub").InnerText = 1
             Else
@@ -459,5 +463,13 @@ Public Class Main
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         MultiSetting.ShowDialog()
+    End Sub
+
+    Private Sub CliProto_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CliProto.SelectedIndexChanged
+        If CliProto.Text = "HTTP" Or CliProto.Text = "HTTPS" Then
+            CliRemPort.Enabled = False
+        Else
+            CliRemPort.Enabled = True
+        End If
     End Sub
 End Class
