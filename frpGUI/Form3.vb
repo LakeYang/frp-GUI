@@ -42,7 +42,12 @@
                     End If
                 Next
             Next
-            ClientList.Items.Remove(ClientList.SelectedItem)
+            ClientList.Items.Clear()
+            For Each node In Main.config.DocumentElement.SelectNodes("/FRPGUI/client/config")
+                ClientList.Items.Add(node.SelectSingleNode("name").InnerText)
+            Next
+            DelBtn.Enabled = False
+            RenBtn.Enabled = False
             Main.config.Save(Main.path & "/config.xml")
         End If
     End Sub

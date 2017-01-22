@@ -42,7 +42,12 @@
                     End If
                 Next
             Next
-            ServerList.Items.Remove(ServerList.SelectedItem)
+            ServerList.Items.Clear()
+            For Each node In Main.config.DocumentElement.SelectNodes("/FRPGUI/server/config")
+                ServerList.Items.Add(node.SelectSingleNode("name").InnerText)
+            Next
+            DelBtn.Enabled = False
+            ReBtn.Enabled = False
             Main.config.Save(Main.path & "/config.xml")
         End If
     End Sub

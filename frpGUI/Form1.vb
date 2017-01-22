@@ -354,6 +354,24 @@ Public Class Main
         Dim servername = InputBox("Pick a name for this server:", "Save server config")
 
         If servername <> "" Then
+            For Each node In config.DocumentElement.SelectNodes("/FRPGUI/server/config")
+                If node.SelectSingleNode("name").InnerText = servername Then
+                    Dim response = MsgBox("Profile [" & servername & "] already exists. Overwrite?", MsgBoxStyle.YesNo, "frp GUI")
+                    If response = MsgBoxResult.Yes Then
+                        node.SelectSingleNode("name").InnerText = servername
+                        node.SelectSingleNode("address").InnerText = ServerAddr.Text
+                        node.SelectSingleNode("port").InnerText = ServerPort.Text
+                        node.SelectSingleNode("mode").InnerText = ServerMode.Text
+                        node.SelectSingleNode("token").InnerText = ServerToken.Text
+                        config.Save(path & "/config.xml")
+                        ReloadGUI()
+                        MessageBox.Show("Server profile [" & servername & "] updated.", "Success")
+                    Else
+                        AppendOutputText("Profile overwrition cancelled")
+                        Exit Sub
+                    End If
+                End If
+            Next
             config.DocumentElement.SelectSingleNode("/FRPGUI/server").AppendChild(config.CreateElement("config"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.AppendChild(config.CreateElement("name"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.AppendChild(config.CreateElement("address"))
@@ -368,6 +386,7 @@ Public Class Main
             config.Save(path & "/config.xml")
             ReloadGUI()
             MessageBox.Show("Server profile [" & servername & "] added.", "Success")
+
         End If
     End Sub
 
@@ -419,7 +438,7 @@ Public Class Main
                         node.SelectSingleNode("ip").InnerText = CliIP.Text
                         node.SelectSingleNode("rport").InnerText = CliRemPort.Text
                         config.Save(path & "/config.xml")
-                        AppendOutputText("Client profile [" & clintname & "] saved")
+                        AppendOutputText("Client profile [" & clintname & "] updated")
                         Exit Sub
                     Else
                         AppendOutputText("Profile overwrition cancelled")
@@ -441,7 +460,7 @@ Public Class Main
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("proto").InnerText = CliProto.Text
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("port").InnerText = CliPort.Text
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("domain").InnerText = CliDom.Text
-            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("lnlist").InnerText = 0
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("inlist").InnerText = 0
             If CliIsSub.Checked Then
                 config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("issub").InnerText = 1
             Else
