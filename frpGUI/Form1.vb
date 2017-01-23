@@ -57,6 +57,22 @@ Public Class Main
         CliRemPort.Enabled = True
         CliSave.Enabled = True
         CliAdvSet.Enabled = True
+        Dim cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/server")
+        ServerAddr.Text = cnode.SelectSingleNode("address").InnerText
+        ServerPort.Text = cnode.SelectSingleNode("port").InnerText
+        ServerMode.Text = cnode.SelectSingleNode("mode").InnerText
+        ServerToken.Text = cnode.SelectSingleNode("token").InnerText
+        cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/client")
+        CliConfig.Text = cnode.SelectSingleNode("name").InnerText
+        CliPort.Text = cnode.SelectSingleNode("port").InnerText
+        CliDom.Text = cnode.SelectSingleNode("domain").InnerText
+        If cnode.SelectSingleNode("issub").InnerText = "1" Then
+            CliIsSub.Checked = True
+        Else
+            CliIsSub.Checked = False
+        End If
+        CliIP.Text = cnode.SelectSingleNode("ip").InnerText
+        CliRemPort.Text = cnode.SelectSingleNode("rport").InnerText
     End Sub
 
     Private WithEvents MyProcess As Process
@@ -231,7 +247,7 @@ Public Class Main
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles CliAdvSet.Click
-
+        AdvSetting.ShowDialog()
     End Sub
 
     Private Sub Switch_Click(sender As Object, e As EventArgs) Handles Switch.Click
@@ -456,6 +472,16 @@ Public Class Main
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("ip"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("rport"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("inlist"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("encrypt"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("gzip"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("passpro"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("username"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("passwd"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("rewrite"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("host"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("urlroute"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("proxy"))
+            config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.AppendChild(config.CreateElement("proxyaddr"))
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("name").InnerText = clintname
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("proto").InnerText = CliProto.Text
             config.DocumentElement.SelectSingleNode("/FRPGUI/client").LastChild.SelectSingleNode("port").InnerText = CliPort.Text

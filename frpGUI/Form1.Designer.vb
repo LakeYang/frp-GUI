@@ -201,7 +201,7 @@ Partial Class Main
         '
         Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
-        Me.NotifyIcon1.Text = "frp GUI 1.0"
+        Me.NotifyIcon1.Text = "frp GUI 1.0.1"
         Me.NotifyIcon1.Visible = True
         '
         'ContextMenuStrip1
