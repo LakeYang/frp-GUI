@@ -172,7 +172,7 @@ Partial Class AdvSetting
         Me.GroupBox3.Size = New System.Drawing.Size(315, 52)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Host Header Rewrite"
+        Me.GroupBox3.Text = "Host Header Rewrite (Only available in HTTP)"
         '
         'RewHost
         '

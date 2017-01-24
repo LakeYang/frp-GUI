@@ -13,6 +13,16 @@
       <ip>127.0.0.1</ip>
       <rport>3389</rport>
       <inlist>0</inlist>
+      <encrypt />
+      <gzip />
+      <passpro />
+      <username />
+      <passwd />
+      <rewrite />
+      <host />
+      <urlroute />
+      <proxy />
+      <proxyaddr />
     </config>
     <config>
       <name>LinuxSSH</name>
@@ -24,17 +34,65 @@
       <ip>127.0.0.1</ip>
       <rport>2000</rport>
       <inlist>0</inlist>
+      <encrypt />
+      <gzip />
+      <passpro />
+      <username />
+      <passwd />
+      <rewrite />
+      <host />
+      <urlroute />
+      <proxy />
+      <proxyaddr />
     </config>
     <config>
       <name>Web Service</name>
       <proto>HTTP</proto>
       <port>80</port>
       <domain>app</domain>
-      <issub>1</issub>
+      <issub>0</issub>
       <ip>127.0.0.1</ip>
-      <rport>8080</rport>
+      <rport></rport>
       <inlist>0</inlist>
+      <encrypt />
+      <gzip />
+      <passpro />
+      <username />
+      <passwd />
+      <rewrite />
+      <host />
+      <urlroute />
+      <proxy />
+      <proxyaddr />
     </config>
   </client>
+  <default>
+    <server>
+      <address></address>
+      <port></port>
+      <mode></mode>
+      <token></token>
+    </server>
+    <client>
+      <name></name>
+      <proto></proto>
+      <port></port>
+      <domain></domain>
+      <issub></issub>
+      <ip></ip>
+      <rport></rport>
+      <encrypt></encrypt>
+      <gzip></gzip>
+      <passpro></passpro>
+      <username></username>
+      <passwd></passwd>
+      <rewrite></rewrite>
+      <host></host>
+      <urlroute>
+      </urlroute>
+      <proxy>0</proxy>
+      <proxyaddr>http://127.0.0.1:1080</proxyaddr>
+    </client>
+  </default>
   <startup>0</startup>
 </FRPGUI>

@@ -32,11 +32,9 @@ Partial Class Main
         Me.ServerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientConfigToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientManagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ExportConfigToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ExportConfigToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.SettingsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BootSetMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OpenFrpciniToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FrpOnGithubToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -114,7 +112,7 @@ Partial Class Main
         '
         'ConfigToolStripMenuItem
         '
-        Me.ConfigToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ServerToolStripMenuItem, Me.ClientConfigToolStripMenuItem, Me.ClientManagerToolStripMenuItem, Me.ToolStripSeparator2, Me.ExportConfigToolStripMenuItem, Me.ExportConfigToolStripMenuItem1})
+        Me.ConfigToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ServerToolStripMenuItem, Me.ClientConfigToolStripMenuItem, Me.ClientManagerToolStripMenuItem})
         Me.ConfigToolStripMenuItem.Name = "ConfigToolStripMenuItem"
         Me.ConfigToolStripMenuItem.Size = New System.Drawing.Size(58, 21)
         Me.ConfigToolStripMenuItem.Text = "Config"
@@ -137,26 +135,9 @@ Partial Class Main
         Me.ClientManagerToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
         Me.ClientManagerToolStripMenuItem.Text = "Client Manager"
         '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(167, 6)
-        '
-        'ExportConfigToolStripMenuItem
-        '
-        Me.ExportConfigToolStripMenuItem.Name = "ExportConfigToolStripMenuItem"
-        Me.ExportConfigToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
-        Me.ExportConfigToolStripMenuItem.Text = "Import config"
-        '
-        'ExportConfigToolStripMenuItem1
-        '
-        Me.ExportConfigToolStripMenuItem1.Name = "ExportConfigToolStripMenuItem1"
-        Me.ExportConfigToolStripMenuItem1.Size = New System.Drawing.Size(170, 22)
-        Me.ExportConfigToolStripMenuItem1.Text = "Export config"
-        '
         'SettingsToolStripMenuItem
         '
-        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BootSetMenu})
+        Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BootSetMenu, Me.OpenFrpciniToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
         Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(66, 21)
         Me.SettingsToolStripMenuItem.Text = "Settings"
@@ -166,6 +147,12 @@ Partial Class Main
         Me.BootSetMenu.Name = "BootSetMenu"
         Me.BootSetMenu.Size = New System.Drawing.Size(211, 22)
         Me.BootSetMenu.Text = "Start on system startup"
+        '
+        'OpenFrpciniToolStripMenuItem
+        '
+        Me.OpenFrpciniToolStripMenuItem.Name = "OpenFrpciniToolStripMenuItem"
+        Me.OpenFrpciniToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.OpenFrpciniToolStripMenuItem.Text = "Open frpc.ini"
         '
         'HelpToolStripMenuItem
         '
@@ -201,7 +188,7 @@ Partial Class Main
         '
         Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
-        Me.NotifyIcon1.Text = "frp GUI 1.0.1"
+        Me.NotifyIcon1.Text = "frp GUI 1.0.20"
         Me.NotifyIcon1.Visible = True
         '
         'ContextMenuStrip1
@@ -518,9 +505,7 @@ Partial Class Main
     Friend WithEvents ConfigToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SettingsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ExportConfigToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents BootSetMenu As ToolStripMenuItem
-    Friend WithEvents ExportConfigToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents NotifyIcon1 As NotifyIcon
     Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
     Friend WithEvents SToolStripMenuItem As ToolStripMenuItem
@@ -530,7 +515,6 @@ Partial Class Main
     Friend WithEvents AboutFrpGUIToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ServerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ClientConfigToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label4 As Label
@@ -559,4 +543,5 @@ Partial Class Main
     Friend WithEvents ClientManagerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CliIsSub As CheckBox
     Friend WithEvents CliSave As Button
+    Friend WithEvents OpenFrpciniToolStripMenuItem As ToolStripMenuItem
 End Class
