@@ -365,8 +365,29 @@ Public Class Main
                                     End If
                                     outputFile.WriteLine("local_port = " & node.SelectSingleNode("port").InnerText)
                                     outputFile.WriteLine("local_ip = " & node.SelectSingleNode("ip").InnerText)
-                                    outputFile.WriteLine("remote_port = " & node.SelectSingleNode("rport").InnerText)
+                                outputFile.WriteLine("remote_port = " & node.SelectSingleNode("rport").InnerText)
+                                If node.SelectSingleNode("encrypt").InnerText = "1" Then
+                                    outputFile.WriteLine("use_encryption = true")
                                 End If
+                                If node.SelectSingleNode("gzip").InnerText = "1" Then
+                                    outputFile.WriteLine("use_gzip = true")
+                                End If
+                                If CliProto.Text = "HTTP" Then
+                                    If node.SelectSingleNode("passpro").InnerText = "1" Then
+                                        outputFile.WriteLine("http_user = " & node.SelectSingleNode("username").InnerText)
+                                        outputFile.WriteLine("http_pwd = " & node.SelectSingleNode("passwd").InnerText)
+                                    End If
+                                    If node.SelectSingleNode("rewrite").InnerText = "1" Then
+                                        outputFile.WriteLine("host_header_rewrite = " & cnode.SelectSingleNode("host").InnerText)
+                                    End If
+                                    If node.SelectSingleNode("urlroute").InnerText <> "" Then
+                                        outputFile.WriteLine("locations = " & node.SelectSingleNode("urlroute").InnerText)
+                                    End If
+                                    If node.SelectSingleNode("proxy").InnerText = "1" Then
+                                        outputFile.WriteLine("http_proxy = " & node.SelectSingleNode("proxyaddr").InnerText)
+                                    End If
+                                End If
+                            End If
                             Next
                         End If
                     End Using
