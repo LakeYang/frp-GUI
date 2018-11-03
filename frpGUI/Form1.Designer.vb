@@ -45,11 +45,6 @@ Partial Class Main
         Me.SToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.ServerToken = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.ServerMode = New System.Windows.Forms.ComboBox()
-        Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.CliSave = New System.Windows.Forms.Button()
@@ -106,7 +101,7 @@ Partial Class Main
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(516, 25)
+        Me.MenuStrip1.Size = New System.Drawing.Size(511, 25)
         Me.MenuStrip1.TabIndex = 4
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -211,67 +206,16 @@ Partial Class Main
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Controls.Add(Me.ServerToken)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.ServerMode)
-        Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.ServerAddr)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.ServerPort)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 28)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(268, 90)
+        Me.GroupBox1.Size = New System.Drawing.Size(268, 42)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Server"
-        '
-        'Button2
-        '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.Location = New System.Drawing.Point(230, 54)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(30, 30)
-        Me.Button2.TabIndex = 10
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'ServerToken
-        '
-        Me.ServerToken.Location = New System.Drawing.Point(122, 61)
-        Me.ServerToken.Name = "ServerToken"
-        Me.ServerToken.Size = New System.Drawing.Size(100, 21)
-        Me.ServerToken.TabIndex = 9
-        Me.ServerToken.UseSystemPasswordChar = True
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(21, 64)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(95, 12)
-        Me.Label2.TabIndex = 8
-        Me.Label2.Text = "Privilege_token"
-        '
-        'ServerMode
-        '
-        Me.ServerMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.ServerMode.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.ServerMode.FormattingEnabled = True
-        Me.ServerMode.Items.AddRange(New Object() {"Privilege", "Normal"})
-        Me.ServerMode.Location = New System.Drawing.Point(74, 38)
-        Me.ServerMode.Name = "ServerMode"
-        Me.ServerMode.Size = New System.Drawing.Size(87, 20)
-        Me.ServerMode.TabIndex = 7
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(39, 41)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(29, 12)
-        Me.Label4.TabIndex = 6
-        Me.Label4.Text = "Mode"
         '
         'Label3
         '
@@ -300,9 +244,9 @@ Partial Class Main
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.CliConfig)
         Me.GroupBox2.Controls.Add(Me.CliConfHint)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 124)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 87)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(268, 131)
+        Me.GroupBox2.Size = New System.Drawing.Size(268, 153)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Client"
@@ -311,7 +255,7 @@ Partial Class Main
         '
         Me.CliSave.BackgroundImage = CType(resources.GetObject("CliSave.BackgroundImage"), System.Drawing.Image)
         Me.CliSave.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CliSave.Location = New System.Drawing.Point(144, 96)
+        Me.CliSave.Location = New System.Drawing.Point(144, 111)
         Me.CliSave.Name = "CliSave"
         Me.CliSave.Size = New System.Drawing.Size(30, 30)
         Me.CliSave.TabIndex = 14
@@ -337,7 +281,7 @@ Partial Class Main
         '
         'CliRemPort
         '
-        Me.CliRemPort.Location = New System.Drawing.Point(85, 97)
+        Me.CliRemPort.Location = New System.Drawing.Point(85, 112)
         Me.CliRemPort.MaxLength = 5
         Me.CliRemPort.Name = "CliRemPort"
         Me.CliRemPort.Size = New System.Drawing.Size(43, 21)
@@ -346,7 +290,7 @@ Partial Class Main
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(7, 102)
+        Me.Label10.Location = New System.Drawing.Point(7, 117)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(71, 12)
         Me.Label10.TabIndex = 11
@@ -354,7 +298,7 @@ Partial Class Main
         '
         'CliAdvSet
         '
-        Me.CliAdvSet.Location = New System.Drawing.Point(182, 100)
+        Me.CliAdvSet.Location = New System.Drawing.Point(182, 115)
         Me.CliAdvSet.Name = "CliAdvSet"
         Me.CliAdvSet.Size = New System.Drawing.Size(75, 23)
         Me.CliAdvSet.TabIndex = 10
@@ -363,7 +307,7 @@ Partial Class Main
         '
         'CliPort
         '
-        Me.CliPort.Location = New System.Drawing.Point(215, 73)
+        Me.CliPort.Location = New System.Drawing.Point(215, 82)
         Me.CliPort.MaxLength = 5
         Me.CliPort.Name = "CliPort"
         Me.CliPort.Size = New System.Drawing.Size(43, 21)
@@ -372,7 +316,7 @@ Partial Class Main
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(180, 76)
+        Me.Label9.Location = New System.Drawing.Point(180, 85)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(29, 12)
         Me.Label9.TabIndex = 8
@@ -380,7 +324,7 @@ Partial Class Main
         '
         'CliIP
         '
-        Me.CliIP.Location = New System.Drawing.Point(60, 73)
+        Me.CliIP.Location = New System.Drawing.Point(60, 82)
         Me.CliIP.Name = "CliIP"
         Me.CliIP.Size = New System.Drawing.Size(101, 21)
         Me.CliIP.TabIndex = 7
@@ -389,7 +333,7 @@ Partial Class Main
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 76)
+        Me.Label8.Location = New System.Drawing.Point(6, 85)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(53, 12)
         Me.Label8.TabIndex = 6
@@ -457,12 +401,12 @@ Partial Class Main
         Me.OutputTextBox.Name = "OutputTextBox"
         Me.OutputTextBox.ReadOnly = True
         Me.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.OutputTextBox.Size = New System.Drawing.Size(197, 183)
+        Me.OutputTextBox.Size = New System.Drawing.Size(199, 155)
         Me.OutputTextBox.TabIndex = 7
         '
         'Switch
         '
-        Me.Switch.Location = New System.Drawing.Point(422, 224)
+        Me.Switch.Location = New System.Drawing.Point(407, 205)
         Me.Switch.Name = "Switch"
         Me.Switch.Size = New System.Drawing.Size(75, 23)
         Me.Switch.TabIndex = 8
@@ -473,7 +417,7 @@ Partial Class Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(516, 273)
+        Me.ClientSize = New System.Drawing.Size(511, 252)
         Me.Controls.Add(Me.Switch)
         Me.Controls.Add(Me.OutputTextBox)
         Me.Controls.Add(Me.GroupBox2)
@@ -517,11 +461,7 @@ Partial Class Main
     Friend WithEvents ClientConfigToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents Label4 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents ServerMode As ComboBox
-    Friend WithEvents Label2 As Label
-    Friend WithEvents ServerToken As TextBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents CliConfHint As Label
     Friend WithEvents DomType As Label
@@ -536,7 +476,6 @@ Partial Class Main
     Friend WithEvents CliDom As TextBox
     Friend WithEvents OutputTextBox As TextBox
     Friend WithEvents Switch As Button
-    Friend WithEvents Button2 As Button
     Friend WithEvents CliRemPort As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents Button3 As Button

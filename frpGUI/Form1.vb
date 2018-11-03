@@ -60,8 +60,6 @@ Public Class Main
         Dim cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/server")
         ServerAddr.Text = cnode.SelectSingleNode("address").InnerText
         ServerPort.Text = cnode.SelectSingleNode("port").InnerText
-        ServerMode.Text = cnode.SelectSingleNode("mode").InnerText
-        ServerToken.Text = cnode.SelectSingleNode("token").InnerText
         cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/client")
         CliConfig.Text = cnode.SelectSingleNode("name").InnerText
         CliPort.Text = cnode.SelectSingleNode("port").InnerText
@@ -115,19 +113,6 @@ Public Class Main
             My.Computer.Registry.CurrentUser.OpenSubKey("SOFTWARE\Microsoft\Windows\CurrentVersion\Run", True).SetValue(Application.ProductName, Application.ExecutablePath & " -s")
 
         End If
-        ServerMode.Text = "Privilege"
-        CliProto.Text = "TCP"
-        For Each s As String In My.Application.CommandLineArgs
-            If s = "-s" Then
-                silenceMode = True
-                Switch.PerformClick()
-                Me.Hide()
-                AppendOutputText("Silence mode enabled")
-            End If
-        Next
-        If Not silenceMode Then
-            Me.Opacity = 100%
-        End If
     End Sub
     Private Sub ToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Dim menuItem As ToolStripMenuItem = TryCast(sender, ToolStripMenuItem)
@@ -137,8 +122,6 @@ Public Class Main
                 If node.SelectSingleNode("name").InnerText = menuItem.Text Then
                     ServerAddr.Text = node.SelectSingleNode("address").InnerText
                     ServerPort.Text = node.SelectSingleNode("port").InnerText
-                    ServerMode.Text = node.SelectSingleNode("mode").InnerText
-                    ServerToken.Text = node.SelectSingleNode("token").InnerText
                 End If
             Next
 
@@ -225,16 +208,7 @@ Public Class Main
         End If
     End Sub
 
-    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ServerMode.SelectedIndexChanged
-        If ServerMode.Text = "Normal" Then
-            ServerToken.Enabled = False
-        Else
-            ServerToken.Enabled = True
-
-        End If
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+    Private Sub Label2_Click(sender As Object, e As EventArgs)
 
     End Sub
 
@@ -259,112 +233,94 @@ Public Class Main
             AppendOutputText("frpc process stopped")
         Else
             If Not silenceMode Then
-                If ServerAddr.Text = "" Or ServerMode.Text = "" Or ServerPort.Text = "" Or ServerToken.Text = "" Or CliPort.Text = "" Then
-                    MessageBox.Show("Please fill in tha blanks on left before start frpc.", "Error")
-                    Exit Sub
-                End If
                 If CliRemPort.Text = "" And (CliProto.Text = "TCP" Or CliProto.Text = "UDP") Then
                     MessageBox.Show("Remote port cannot be empty in UDP and TCP.", "Error")
                     Exit Sub
                 End If
                 AppendOutputText("Updating config.xml")
-                    Dim cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/server")
-                    cnode.SelectSingleNode("address").InnerText = ServerAddr.Text
-                    cnode.SelectSingleNode("port").InnerText = ServerPort.Text
-                    cnode.SelectSingleNode("mode").InnerText = ServerMode.Text
-                    cnode.SelectSingleNode("token").InnerText = ServerToken.Text
-                    cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/client")
-                    cnode.SelectSingleNode("name").InnerText = CliConfig.Text
-                    cnode.SelectSingleNode("proto").InnerText = CliProto.Text
-                    cnode.SelectSingleNode("port").InnerText = CliPort.Text
-                    cnode.SelectSingleNode("domain").InnerText = CliDom.Text
-                    If CliIsSub.Checked Then
-                        cnode.SelectSingleNode("issub").InnerText = 1
-                    Else
-                        cnode.SelectSingleNode("issub").InnerText = 0
-                    End If
-                    cnode.SelectSingleNode("ip").InnerText = CliIP.Text
-                    cnode.SelectSingleNode("rport").InnerText = CliRemPort.Text
-                    config.Save(path & "/config.xml")
-                    AppendOutputText("Generating frpc config file")
-                    Try
-                        My.Computer.FileSystem.DeleteFile(path & "/frpc.ini")
-                    Catch ex As Exception
-                    End Try
+                Dim cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/server")
+                cnode.SelectSingleNode("address").InnerText = ServerAddr.Text
+                cnode.SelectSingleNode("port").InnerText = ServerPort.Text
+                cnode = config.DocumentElement.SelectSingleNode("/FRPGUI/default/client")
+                cnode.SelectSingleNode("name").InnerText = CliConfig.Text
+                cnode.SelectSingleNode("proto").InnerText = CliProto.Text
+                cnode.SelectSingleNode("port").InnerText = CliPort.Text
+                cnode.SelectSingleNode("domain").InnerText = CliDom.Text
+                If CliIsSub.Checked Then
+                    cnode.SelectSingleNode("issub").InnerText = 1
+                Else
+                    cnode.SelectSingleNode("issub").InnerText = 0
+                End If
+                cnode.SelectSingleNode("ip").InnerText = CliIP.Text
+                cnode.SelectSingleNode("rport").InnerText = CliRemPort.Text
+                config.Save(path & "/config.xml")
+                AppendOutputText("Generating frpc config file")
+                Try
+                    My.Computer.FileSystem.DeleteFile(path & "/frpc.ini")
+                Catch ex As Exception
+                End Try
 
 
-                    Using outputFile As New StreamWriter(path & "/frpc.ini")
-                        outputFile.WriteLine("# frpc.ini generated by frp GUI")
-                        outputFile.WriteLine("[common]")
-                        outputFile.WriteLine("server_addr = " & ServerAddr.Text)
-                        outputFile.WriteLine("server_port = " & ServerPort.Text)
-                        If ServerMode.Text = "Privilege" Then
-                            outputFile.WriteLine("privilege_token = " & ServerToken.Text)
-                        Else
-                        End If
-                        If CliConfHint.Text = "Config" Then
-                            outputFile.WriteLine("")
-                            outputFile.WriteLine("[service]")
-                            If ServerMode.Text = "Privilege" Then
-                                outputFile.WriteLine("privilege_mode = true")
+                Using outputFile As New StreamWriter(path & "/frpc.ini")
+                    outputFile.WriteLine("# frpc.ini generated by frp GUI")
+                    outputFile.WriteLine("[common]")
+                    outputFile.WriteLine("server_addr = " & ServerAddr.Text)
+                    outputFile.WriteLine("server_port = " & ServerPort.Text)
+                    If CliConfHint.Text = "Config" Then
+                        outputFile.WriteLine("")
+                        outputFile.WriteLine("[service]")
+                        outputFile.WriteLine("type = " & CliProto.Text.ToLower())
+                        If CliDom.Text <> "" Then
+                            If CliIsSub.Checked Then
+                                outputFile.WriteLine("subdomain = " & CliDom.Text)
                             Else
+                                outputFile.WriteLine("custom_domains = " & CliDom.Text)
                             End If
-                            outputFile.WriteLine("type = " & CliProto.Text.ToLower())
-                            If CliDom.Text <> "" Then
-                                If CliIsSub.Checked Then
-                                    outputFile.WriteLine("subdomain = " & CliDom.Text)
-                                Else
-                                    outputFile.WriteLine("custom_domains = " & CliDom.Text)
-                                End If
+                        End If
+                        outputFile.WriteLine("local_port = " & CliPort.Text)
+                        outputFile.WriteLine("local_ip = " & CliIP.Text)
+                        If CliProto.Text <> "HTTP" And CliProto.Text <> "HTTPS" Then
+                            outputFile.WriteLine("remote_port = " & CliRemPort.Text)
+                        End If
+                        If cnode.SelectSingleNode("encrypt").InnerText = "1" Then
+                            outputFile.WriteLine("use_encryption = true")
+                        End If
+                        If cnode.SelectSingleNode("gzip").InnerText = "1" Then
+                            outputFile.WriteLine("use_gzip = true")
+                        End If
+                        If CliProto.Text = "HTTP" Then
+                            If cnode.SelectSingleNode("passpro").InnerText = "1" Then
+                                outputFile.WriteLine("http_user = " & cnode.SelectSingleNode("username").InnerText)
+                                outputFile.WriteLine("http_pwd = " & cnode.SelectSingleNode("passwd").InnerText)
                             End If
-                            outputFile.WriteLine("local_port = " & CliPort.Text)
-                            outputFile.WriteLine("local_ip = " & CliIP.Text)
-                            If CliProto.Text <> "HTTP" And CliProto.Text <> "HTTPS" Then
-                                outputFile.WriteLine("remote_port = " & CliRemPort.Text)
+                            If cnode.SelectSingleNode("rewrite").InnerText = "1" Then
+                                outputFile.WriteLine("host_header_rewrite = " & cnode.SelectSingleNode("host").InnerText)
                             End If
-                            If cnode.SelectSingleNode("encrypt").InnerText = "1" Then
-                                outputFile.WriteLine("use_encryption = true")
+                            If cnode.SelectSingleNode("urlroute").InnerText <> "" Then
+                                outputFile.WriteLine("locations = " & cnode.SelectSingleNode("urlroute").InnerText)
                             End If
-                            If cnode.SelectSingleNode("gzip").InnerText = "1" Then
-                                outputFile.WriteLine("use_gzip = true")
+                            If cnode.SelectSingleNode("proxy").InnerText = "1" Then
+                                outputFile.WriteLine("http_proxy = " & cnode.SelectSingleNode("proxyaddr").InnerText)
                             End If
-                            If CliProto.Text = "HTTP" Then
-                                If cnode.SelectSingleNode("passpro").InnerText = "1" Then
-                                    outputFile.WriteLine("http_user = " & cnode.SelectSingleNode("username").InnerText)
-                                    outputFile.WriteLine("http_pwd = " & cnode.SelectSingleNode("passwd").InnerText)
-                                End If
-                                If cnode.SelectSingleNode("rewrite").InnerText = "1" Then
-                                    outputFile.WriteLine("host_header_rewrite = " & cnode.SelectSingleNode("host").InnerText)
-                                End If
-                                If cnode.SelectSingleNode("urlroute").InnerText <> "" Then
-                                    outputFile.WriteLine("locations = " & cnode.SelectSingleNode("urlroute").InnerText)
-                                End If
-                                If cnode.SelectSingleNode("proxy").InnerText = "1" Then
-                                    outputFile.WriteLine("http_proxy = " & cnode.SelectSingleNode("proxyaddr").InnerText)
-                                End If
-                            End If
-                        Else
-                            AppendOutputText("Multiple mode enabled")
-                            Dim servicecount = 0
-                            For Each node In config.DocumentElement.SelectNodes("/FRPGUI/client/config")
-                                If node.SelectSingleNode("inlist").InnerText = "1" Then
-                                    servicecount += 1
-                                    outputFile.WriteLine("")
-                                    outputFile.WriteLine("[service" & servicecount & "]")
-                                    If ServerMode.Text = "Privilege" Then
-                                        outputFile.WriteLine("privilege_mode = true")
+                        End If
+                    Else
+                        AppendOutputText("Multiple mode enabled")
+                        Dim servicecount = 0
+                        For Each node In config.DocumentElement.SelectNodes("/FRPGUI/client/config")
+                            If node.SelectSingleNode("inlist").InnerText = "1" Then
+                                servicecount += 1
+                                outputFile.WriteLine("")
+                                outputFile.WriteLine("[service" & servicecount & "]")
+                                outputFile.WriteLine("type = " & node.SelectSingleNode("proto").InnerText.ToLower())
+                                If CliDom.Text <> "" Then
+                                    If CliIsSub.Checked Then
+                                        outputFile.WriteLine("subdomain = " & node.SelectSingleNode("domain").InnerText)
                                     Else
+                                        outputFile.WriteLine("custom_domains = " & node.SelectSingleNode("domain").InnerText)
                                     End If
-                                    outputFile.WriteLine("type = " & node.SelectSingleNode("proto").InnerText.ToLower())
-                                    If CliDom.Text <> "" Then
-                                        If CliIsSub.Checked Then
-                                            outputFile.WriteLine("subdomain = " & node.SelectSingleNode("domain").InnerText)
-                                        Else
-                                            outputFile.WriteLine("custom_domains = " & node.SelectSingleNode("domain").InnerText)
-                                        End If
-                                    End If
-                                    outputFile.WriteLine("local_port = " & node.SelectSingleNode("port").InnerText)
-                                    outputFile.WriteLine("local_ip = " & node.SelectSingleNode("ip").InnerText)
+                                End If
+                                outputFile.WriteLine("local_port = " & node.SelectSingleNode("port").InnerText)
+                                outputFile.WriteLine("local_ip = " & node.SelectSingleNode("ip").InnerText)
                                 outputFile.WriteLine("remote_port = " & node.SelectSingleNode("rport").InnerText)
                                 If node.SelectSingleNode("encrypt").InnerText = "1" Then
                                     outputFile.WriteLine("use_encryption = true")
@@ -388,11 +344,11 @@ Public Class Main
                                     End If
                                 End If
                             End If
-                            Next
-                        End If
-                    End Using
-                End If
-                AppendOutputText("Starting frps service")
+                        Next
+                    End If
+                End Using
+            End If
+            AppendOutputText("Starting frps service")
             MyProcess = New Process
             With MyProcess.StartInfo
                 .FileName = "frpc.exe"
@@ -436,7 +392,7 @@ Public Class Main
         SvrMgr.ShowDialog()
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
         Dim servername = InputBox("Pick a name for this server:", "Save server config")
 
         If servername <> "" Then
@@ -447,8 +403,6 @@ Public Class Main
                         node.SelectSingleNode("name").InnerText = servername
                         node.SelectSingleNode("address").InnerText = ServerAddr.Text
                         node.SelectSingleNode("port").InnerText = ServerPort.Text
-                        node.SelectSingleNode("mode").InnerText = ServerMode.Text
-                        node.SelectSingleNode("token").InnerText = ServerToken.Text
                         config.Save(path & "/config.xml")
                         ReloadGUI()
                         MessageBox.Show("Server profile [" & servername & "] updated.", "Success")
@@ -467,8 +421,6 @@ Public Class Main
             config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.SelectSingleNode("name").InnerText = servername
             config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.SelectSingleNode("address").InnerText = ServerAddr.Text
             config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.SelectSingleNode("port").InnerText = ServerPort.Text
-            config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.SelectSingleNode("mode").InnerText = ServerMode.Text
-            config.DocumentElement.SelectSingleNode("/FRPGUI/server").LastChild.SelectSingleNode("token").InnerText = ServerToken.Text
             config.Save(path & "/config.xml")
             ReloadGUI()
             MessageBox.Show("Server profile [" & servername & "] added.", "Success")
