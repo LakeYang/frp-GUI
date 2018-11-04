@@ -74,34 +74,36 @@ Partial Class Main
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(21, 17)
+        Me.Label1.Location = New System.Drawing.Point(24, 20)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(47, 12)
+        Me.Label1.Size = New System.Drawing.Size(56, 14)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Address"
         '
         'ServerAddr
         '
-        Me.ServerAddr.Location = New System.Drawing.Point(74, 14)
+        Me.ServerAddr.Location = New System.Drawing.Point(86, 16)
         Me.ServerAddr.Name = "ServerAddr"
-        Me.ServerAddr.Size = New System.Drawing.Size(100, 21)
+        Me.ServerAddr.Size = New System.Drawing.Size(116, 23)
         Me.ServerAddr.TabIndex = 1
         '
         'ServerPort
         '
-        Me.ServerPort.Location = New System.Drawing.Point(215, 14)
+        Me.ServerPort.Location = New System.Drawing.Point(251, 16)
         Me.ServerPort.MaxLength = 5
         Me.ServerPort.Name = "ServerPort"
-        Me.ServerPort.Size = New System.Drawing.Size(43, 21)
+        Me.ServerPort.Size = New System.Drawing.Size(49, 23)
         Me.ServerPort.TabIndex = 3
         Me.ServerPort.Text = "7000"
         '
         'MenuStrip1
         '
+        Me.MenuStrip1.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConfigToolStripMenuItem, Me.SettingsToolStripMenuItem, Me.HelpToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(511, 25)
+        Me.MenuStrip1.Padding = New System.Windows.Forms.Padding(7, 2, 0, 2)
+        Me.MenuStrip1.Size = New System.Drawing.Size(596, 28)
         Me.MenuStrip1.TabIndex = 4
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -109,74 +111,74 @@ Partial Class Main
         '
         Me.ConfigToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ServerToolStripMenuItem, Me.ClientConfigToolStripMenuItem, Me.ClientManagerToolStripMenuItem})
         Me.ConfigToolStripMenuItem.Name = "ConfigToolStripMenuItem"
-        Me.ConfigToolStripMenuItem.Size = New System.Drawing.Size(58, 21)
+        Me.ConfigToolStripMenuItem.Size = New System.Drawing.Size(66, 24)
         Me.ConfigToolStripMenuItem.Text = "Config"
         '
         'ServerToolStripMenuItem
         '
         Me.ServerToolStripMenuItem.Name = "ServerToolStripMenuItem"
-        Me.ServerToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.ServerToolStripMenuItem.Size = New System.Drawing.Size(188, 24)
         Me.ServerToolStripMenuItem.Text = "Apply Server"
         '
         'ClientConfigToolStripMenuItem
         '
         Me.ClientConfigToolStripMenuItem.Name = "ClientConfigToolStripMenuItem"
-        Me.ClientConfigToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.ClientConfigToolStripMenuItem.Size = New System.Drawing.Size(188, 24)
         Me.ClientConfigToolStripMenuItem.Text = "Server Manager"
         '
         'ClientManagerToolStripMenuItem
         '
         Me.ClientManagerToolStripMenuItem.Name = "ClientManagerToolStripMenuItem"
-        Me.ClientManagerToolStripMenuItem.Size = New System.Drawing.Size(170, 22)
+        Me.ClientManagerToolStripMenuItem.Size = New System.Drawing.Size(188, 24)
         Me.ClientManagerToolStripMenuItem.Text = "Client Manager"
         '
         'SettingsToolStripMenuItem
         '
         Me.SettingsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BootSetMenu, Me.OpenFrpciniToolStripMenuItem})
         Me.SettingsToolStripMenuItem.Name = "SettingsToolStripMenuItem"
-        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(66, 21)
+        Me.SettingsToolStripMenuItem.Size = New System.Drawing.Size(75, 24)
         Me.SettingsToolStripMenuItem.Text = "Settings"
         '
         'BootSetMenu
         '
         Me.BootSetMenu.Name = "BootSetMenu"
-        Me.BootSetMenu.Size = New System.Drawing.Size(211, 22)
+        Me.BootSetMenu.Size = New System.Drawing.Size(235, 24)
         Me.BootSetMenu.Text = "Start on system startup"
         '
         'OpenFrpciniToolStripMenuItem
         '
         Me.OpenFrpciniToolStripMenuItem.Name = "OpenFrpciniToolStripMenuItem"
-        Me.OpenFrpciniToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.OpenFrpciniToolStripMenuItem.Size = New System.Drawing.Size(235, 24)
         Me.OpenFrpciniToolStripMenuItem.Text = "Open frpc.ini"
         '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FrpOnGithubToolStripMenuItem, Me.ToolStripSeparator1, Me.AboutFrpGUIToolStripMenuItem})
         Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
-        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 21)
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(53, 24)
         Me.HelpToolStripMenuItem.Text = "Help"
         '
         'FrpOnGithubToolStripMenuItem
         '
         Me.FrpOnGithubToolStripMenuItem.Name = "FrpOnGithubToolStripMenuItem"
-        Me.FrpOnGithubToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.FrpOnGithubToolStripMenuItem.Size = New System.Drawing.Size(175, 24)
         Me.FrpOnGithubToolStripMenuItem.Text = "frp on Github"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(155, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(172, 6)
         '
         'AboutFrpGUIToolStripMenuItem
         '
         Me.AboutFrpGUIToolStripMenuItem.Name = "AboutFrpGUIToolStripMenuItem"
-        Me.AboutFrpGUIToolStripMenuItem.Size = New System.Drawing.Size(158, 22)
+        Me.AboutFrpGUIToolStripMenuItem.Size = New System.Drawing.Size(175, 24)
         Me.AboutFrpGUIToolStripMenuItem.Text = "About frp GUI"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(40, 21)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(45, 24)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'NotifyIcon1
@@ -188,20 +190,21 @@ Partial Class Main
         '
         'ContextMenuStrip1
         '
+        Me.ContextMenuStrip1.ImageScalingSize = New System.Drawing.Size(18, 18)
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SToolStripMenuItem, Me.SToolStripMenuItem1})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(135, 48)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(144, 52)
         '
         'SToolStripMenuItem
         '
         Me.SToolStripMenuItem.Name = "SToolStripMenuItem"
-        Me.SToolStripMenuItem.Size = New System.Drawing.Size(134, 22)
+        Me.SToolStripMenuItem.Size = New System.Drawing.Size(143, 24)
         Me.SToolStripMenuItem.Text = "Open GUI"
         '
         'SToolStripMenuItem1
         '
         Me.SToolStripMenuItem1.Name = "SToolStripMenuItem1"
-        Me.SToolStripMenuItem1.Size = New System.Drawing.Size(134, 22)
+        Me.SToolStripMenuItem1.Size = New System.Drawing.Size(143, 24)
         Me.SToolStripMenuItem1.Text = "Exit"
         '
         'GroupBox1
@@ -210,9 +213,9 @@ Partial Class Main
         Me.GroupBox1.Controls.Add(Me.ServerAddr)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Controls.Add(Me.ServerPort)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 28)
+        Me.GroupBox1.Location = New System.Drawing.Point(14, 33)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(268, 42)
+        Me.GroupBox1.Size = New System.Drawing.Size(313, 49)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Server"
@@ -220,9 +223,9 @@ Partial Class Main
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(180, 17)
+        Me.Label3.Location = New System.Drawing.Point(210, 20)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(29, 12)
+        Me.Label3.Size = New System.Drawing.Size(35, 14)
         Me.Label3.TabIndex = 4
         Me.Label3.Text = "Port"
         '
@@ -244,9 +247,9 @@ Partial Class Main
         Me.GroupBox2.Controls.Add(Me.Label6)
         Me.GroupBox2.Controls.Add(Me.CliConfig)
         Me.GroupBox2.Controls.Add(Me.CliConfHint)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 87)
+        Me.GroupBox2.Location = New System.Drawing.Point(14, 101)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(268, 153)
+        Me.GroupBox2.Size = New System.Drawing.Size(313, 178)
         Me.GroupBox2.TabIndex = 6
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Client"
@@ -255,16 +258,16 @@ Partial Class Main
         '
         Me.CliSave.BackgroundImage = CType(resources.GetObject("CliSave.BackgroundImage"), System.Drawing.Image)
         Me.CliSave.Cursor = System.Windows.Forms.Cursors.Default
-        Me.CliSave.Location = New System.Drawing.Point(144, 111)
+        Me.CliSave.Location = New System.Drawing.Point(168, 129)
         Me.CliSave.Name = "CliSave"
-        Me.CliSave.Size = New System.Drawing.Size(30, 30)
+        Me.CliSave.Size = New System.Drawing.Size(35, 35)
         Me.CliSave.TabIndex = 14
         Me.CliSave.UseVisualStyleBackColor = True
         '
         'CliIsSub
         '
         Me.CliIsSub.AutoSize = True
-        Me.CliIsSub.Location = New System.Drawing.Point(249, 52)
+        Me.CliIsSub.Location = New System.Drawing.Point(290, 61)
         Me.CliIsSub.Name = "CliIsSub"
         Me.CliIsSub.Size = New System.Drawing.Size(15, 14)
         Me.CliIsSub.TabIndex = 9
@@ -272,86 +275,86 @@ Partial Class Main
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(195, 13)
+        Me.Button3.Location = New System.Drawing.Point(227, 15)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(62, 23)
+        Me.Button3.Size = New System.Drawing.Size(72, 27)
         Me.Button3.TabIndex = 13
         Me.Button3.Text = "Multiple"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'CliRemPort
         '
-        Me.CliRemPort.Location = New System.Drawing.Point(85, 112)
+        Me.CliRemPort.Location = New System.Drawing.Point(99, 131)
         Me.CliRemPort.MaxLength = 5
         Me.CliRemPort.Name = "CliRemPort"
-        Me.CliRemPort.Size = New System.Drawing.Size(43, 21)
+        Me.CliRemPort.Size = New System.Drawing.Size(49, 23)
         Me.CliRemPort.TabIndex = 12
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(7, 117)
+        Me.Label10.Location = New System.Drawing.Point(8, 136)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(71, 12)
+        Me.Label10.Size = New System.Drawing.Size(84, 14)
         Me.Label10.TabIndex = 11
         Me.Label10.Text = "Remote Port"
         '
         'CliAdvSet
         '
-        Me.CliAdvSet.Location = New System.Drawing.Point(182, 115)
+        Me.CliAdvSet.Location = New System.Drawing.Point(212, 134)
         Me.CliAdvSet.Name = "CliAdvSet"
-        Me.CliAdvSet.Size = New System.Drawing.Size(75, 23)
+        Me.CliAdvSet.Size = New System.Drawing.Size(87, 27)
         Me.CliAdvSet.TabIndex = 10
         Me.CliAdvSet.Text = "Advanced"
         Me.CliAdvSet.UseVisualStyleBackColor = True
         '
         'CliPort
         '
-        Me.CliPort.Location = New System.Drawing.Point(215, 82)
+        Me.CliPort.Location = New System.Drawing.Point(251, 96)
         Me.CliPort.MaxLength = 5
         Me.CliPort.Name = "CliPort"
-        Me.CliPort.Size = New System.Drawing.Size(43, 21)
+        Me.CliPort.Size = New System.Drawing.Size(49, 23)
         Me.CliPort.TabIndex = 9
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(180, 85)
+        Me.Label9.Location = New System.Drawing.Point(210, 99)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(29, 12)
+        Me.Label9.Size = New System.Drawing.Size(35, 14)
         Me.Label9.TabIndex = 8
         Me.Label9.Text = "Port"
         '
         'CliIP
         '
-        Me.CliIP.Location = New System.Drawing.Point(60, 82)
+        Me.CliIP.Location = New System.Drawing.Point(70, 96)
         Me.CliIP.Name = "CliIP"
-        Me.CliIP.Size = New System.Drawing.Size(101, 21)
+        Me.CliIP.Size = New System.Drawing.Size(117, 23)
         Me.CliIP.TabIndex = 7
         Me.CliIP.Text = "127.0.0.1"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(6, 85)
+        Me.Label8.Location = New System.Drawing.Point(7, 99)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(53, 12)
+        Me.Label8.Size = New System.Drawing.Size(63, 14)
         Me.Label8.TabIndex = 6
         Me.Label8.Text = "Local_ip"
         '
         'CliDom
         '
-        Me.CliDom.Location = New System.Drawing.Point(166, 49)
+        Me.CliDom.Location = New System.Drawing.Point(194, 57)
         Me.CliDom.Name = "CliDom"
-        Me.CliDom.Size = New System.Drawing.Size(77, 21)
+        Me.CliDom.Size = New System.Drawing.Size(89, 23)
         Me.CliDom.TabIndex = 5
         '
         'DomType
         '
         Me.DomType.AutoSize = True
-        Me.DomType.Location = New System.Drawing.Point(106, 52)
+        Me.DomType.Location = New System.Drawing.Point(124, 61)
         Me.DomType.Name = "DomType"
-        Me.DomType.Size = New System.Drawing.Size(59, 12)
+        Me.DomType.Size = New System.Drawing.Size(70, 14)
         Me.DomType.TabIndex = 4
         Me.DomType.Text = "Subdomain"
         Me.DomType.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -361,17 +364,17 @@ Partial Class Main
         Me.CliProto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CliProto.FormattingEnabled = True
         Me.CliProto.Items.AddRange(New Object() {"TCP", "UDP", "HTTP", "HTTPS"})
-        Me.CliProto.Location = New System.Drawing.Point(41, 50)
+        Me.CliProto.Location = New System.Drawing.Point(48, 58)
         Me.CliProto.Name = "CliProto"
-        Me.CliProto.Size = New System.Drawing.Size(59, 20)
+        Me.CliProto.Size = New System.Drawing.Size(68, 22)
         Me.CliProto.TabIndex = 3
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(7, 53)
+        Me.Label6.Location = New System.Drawing.Point(8, 62)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(35, 12)
+        Me.Label6.Size = New System.Drawing.Size(42, 14)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Proto"
         '
@@ -379,45 +382,45 @@ Partial Class Main
         '
         Me.CliConfig.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CliConfig.FormattingEnabled = True
-        Me.CliConfig.Location = New System.Drawing.Point(74, 14)
+        Me.CliConfig.Location = New System.Drawing.Point(86, 16)
         Me.CliConfig.Name = "CliConfig"
-        Me.CliConfig.Size = New System.Drawing.Size(107, 20)
+        Me.CliConfig.Size = New System.Drawing.Size(124, 22)
         Me.CliConfig.TabIndex = 1
         '
         'CliConfHint
         '
         Me.CliConfHint.AutoSize = True
-        Me.CliConfHint.Location = New System.Drawing.Point(21, 17)
+        Me.CliConfHint.Location = New System.Drawing.Point(24, 20)
         Me.CliConfHint.Name = "CliConfHint"
-        Me.CliConfHint.Size = New System.Drawing.Size(41, 12)
+        Me.CliConfHint.Size = New System.Drawing.Size(49, 14)
         Me.CliConfHint.TabIndex = 0
         Me.CliConfHint.Text = "Config"
         '
         'OutputTextBox
         '
         Me.OutputTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.OutputTextBox.Location = New System.Drawing.Point(300, 35)
+        Me.OutputTextBox.Location = New System.Drawing.Point(350, 41)
         Me.OutputTextBox.Multiline = True
         Me.OutputTextBox.Name = "OutputTextBox"
         Me.OutputTextBox.ReadOnly = True
         Me.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.OutputTextBox.Size = New System.Drawing.Size(199, 155)
+        Me.OutputTextBox.Size = New System.Drawing.Size(232, 180)
         Me.OutputTextBox.TabIndex = 7
         '
         'Switch
         '
-        Me.Switch.Location = New System.Drawing.Point(407, 205)
+        Me.Switch.Location = New System.Drawing.Point(472, 238)
         Me.Switch.Name = "Switch"
-        Me.Switch.Size = New System.Drawing.Size(75, 23)
+        Me.Switch.Size = New System.Drawing.Size(87, 27)
         Me.Switch.TabIndex = 8
         Me.Switch.Text = "Start"
         Me.Switch.UseVisualStyleBackColor = True
         '
         'Main
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 12.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(511, 252)
+        Me.ClientSize = New System.Drawing.Size(596, 294)
         Me.Controls.Add(Me.Switch)
         Me.Controls.Add(Me.OutputTextBox)
         Me.Controls.Add(Me.GroupBox2)
